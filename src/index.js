@@ -17,13 +17,14 @@ app.on('ready', ()=> {
       mainWindow.loadFile('views/index.html')
       const mainMenu = Menu.buildFromTemplate(templateMenu);
       Menu.setApplicationMenu(mainMenu);
-    }); 
+    });
 
     const templateMenu=[
       {
         label:'File', 
         submenu:[
           {
+        
             label:'Exit',
             accelerator:'Ctrl+Q',
             click(){
