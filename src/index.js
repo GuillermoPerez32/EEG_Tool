@@ -19,37 +19,10 @@ app.on('ready', ()=> {
       Menu.setApplicationMenu(mainMenu);
     });
 
-    function createProduct(){
-       newWindow = new BrowserWindow({
-          title:'Add new product',
-          width:400,
-          height:330
-          
-       })
-      newWindow.setMenu(null); 
-      newWindow.loadFile('views/newProducts.html')
-      newWindow.on('closed',()=>{
-        newWindow=null;
-      })
-    }; 
-
     const templateMenu=[
       {
         label:'File', 
         submenu:[
-          {
-            label: 'New Product',
-            accelerator: 'Ctrl+N',
-            click(){
-             createProduct();
-            }
-          },
-          {
-
-            label:'Eliminar todo',
-            click(){}
-
-          },
           {
         
             label:'Exit',
