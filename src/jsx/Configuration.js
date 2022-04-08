@@ -1178,17 +1178,6 @@ const Configuration = (props) => {
 
     // Update the state of Configuration.
     switch (name) {
-      case 'edfFiles':
-        console.log(`Folder path: ${value}`);
-        let f = [];
-        readdir(value, (err, files) => {
-          f=files;
-        });
-        state.edfData.set((prevState) => {
-          return {...prevState, [name]: f};
-        });
-        appContext.setTask(name, value);
-        break;
       case 'LORIScompliant':
         if (value === 'yes') {
           value = true;
@@ -1357,16 +1346,16 @@ const Configuration = (props) => {
         </span>
         <div className='info'>
           <div className='small-pad'>
-            <DirectoryInput
+            <FileInput
               id='edfFiles'
               name='edfFiles'
-              // multiple={true}
-              // accept='.edf,.EDF'
+              multiple={true}
+              accept='.edf,.EDF'
               placeholder={
                 state.edfFiles.get.map((edfFile) => edfFile['name']).join(', ')
               }
               label='EDF Directory Recordings to convert'
-              // required={true}
+              required={true}
               onUserInput={onUserInput}
               help='Filename(s) must be formatted correctly:
               e.g. [subjectID]_[sessionLabel]_[taskName]_[run-1]_ieeg.edf'
