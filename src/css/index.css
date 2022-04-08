@@ -1,0 +1,95 @@
+html {
+    height: 100%;
+    -webkit-app-region: drag;
+    color: rgb(37, 35, 38);
+}
+
+body {
+    margin: 0;
+    -webkit-app-region: drag;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', sans-serif;
+}
+.errors {
+    background: #fff;
+    padding: 0.1px 15px;
+}
+.header {
+    color: #f6ffff;
+    padding: 15px;
+    display: block;
+    cursor: default;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+.header-hint {
+    font-size: 9pt;
+}
+.container {
+    display: flex;
+}
+.info {
+    padding: 14px;
+    background-color: #f3f4f8;
+}
+.half {
+    width: 50%;
+}
+.small-pad {
+    padding: 10px;
+}
+.info-flex-container {
+    display: flex;
+    padding: 14px;
+    flex-wrap: wrap;
+    background-color: #f3f4f8;
+}
+.info-flex-container input {
+    width: 100%;
+}
+.small-pad-flex {
+    flex: 1;
+    padding: 10px;
+    max-width: 175px;
+}
+.label {
+    width: 240px;
+    display: inline-block;
+    max-width: 100%;
+    padding-right: 20px;
+}
+.report .label {
+    width: auto;
+}
+input {
+    max-width: 100%;
+}
+.react-switch {
+    vertical-align: middle;
+    margin-right: 15px;
+}
+.comboField {
+    display: inline-block;
+    max-width: calc(100% - 260px);
+    vertical-align: top;
+}
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin: 1rem 0 1rem 0;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}

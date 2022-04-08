@@ -1,0 +1,32 @@
+.root {
+    padding: 0;
+    width: 100%;
+    min-height: 0;
+    background-color: #fff;
+    border-bottom: 5px solid #252326;
+}
+.menu {
+    display: flex;
+    justify-content: space-around;
+}
+
+.menuTab {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.menu-title {
+    height: 25px;
+    color: black;
+    display: block;
+    cursor: pointer;
+    font-size: 12pt;
+    font-weight: 300;
+    padding: 8px 0 0 0;
+    text-align: center;
+}
+.menu-active {
+    color: #074785;
+    /*color: #0d957e;*/
+    font-weight: bold;
+}

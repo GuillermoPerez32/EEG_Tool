@@ -1,16 +1,173 @@
 {
-  "name": "electron",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "electron src/index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "name": "eeg2bids",
+  "description": "EEG/iEEG to BIDS format Wizard",
+  "version": "1.0.5",
   "dependencies": {
-    "electron": "^17.1.2",
-    "electron-reload": "^2.0.0-alpha.1"
+    "@electron/remote": "^1.1.0",
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "bootstrap": "^5.1.3",
+    "electron-log": "^4.3.5",
+    "electron-store": "^8.0.0",
+    "keytar": "^7.7.0",
+    "papaparse": "^5.3.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.2.3",
+    "react-color": "^2.19.3",
+    "react-datepicker": "^4.1.1",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.2",
+    "react-switch": "^6.0.0",
+    "react-tooltip": "^4.2.21",
+    "socket.io-client": "^4.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/eslint-parser": "^7.14.4",
+    "concurrently": "^6.2.0",
+    "cross-env": "^7.0.3",
+    "electron": "^13.0.1",
+    "electron-builder": "^22.11.4",
+    "electron-devtools-installer": "^3.2.0",
+    "eslint": "^7.27.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx": "^0.1.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "lint-staged": "^11.0.0",
+    "wait-on": "^6.0.0"
+  },
+  "scripts": {
+    "rebuild": "rebuild --runtime=electron --target=11.2.1",
+    "react-start": "cross-env BROWSER=NONE react-scripts start",
+    "electron-start": "cross-env DEV=1 electron .",
+    "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000/ && npm run electron-start\"",
+    "start-server": "./start-server.sh",
+    "react-build": "cross-env INLINE_RUNTIME_CHUNK=false react-scripts build",
+    "pack": "electron-builder --dir -c.extraMetadata.main=build/electron.js",
+    "electron-build-linux": "electron-builder --linux -c.extraMetadata.main=build/electron.js",
+    "electron-build-windows": "electron-builder --win -c.extraMetadata.main=build/electron.js",
+    "electron-build-mac": "electron-builder --mac -c.extraMetadata.main=build/electron.js",
+    "build-linux": "npm run react-build && npm run electron-build-linux",
+    "build-windows": "npm run react-build && npm run electron-build-windows",
+    "build-mac": "npm run react-build && npm run electron-build-mac",
+    "build": "npm run react-build && npm run electron-build-linux && npm run electron-build-windows & npm run electron-build-mac",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css,md}": [
+      "eslint --fix src",
+      "git add"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "homepage": "./",
+  "main": "public/electron.js",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "contributors": [
+    "Alizée Wickenheiser",
+    "Cécile Madjar",
+    "Christine Rogers",
+    "Derek Lo",
+    "Laëtitia Fesselier"
+  ],
+  "author": {
+    "name": "Loris Team",
+    "email": "loris-dev@bic.mni.mcgill.ca",
+    "url": "https://github.com/aces/eeg2bids"
+  },
+  "build": {
+    "appId": "mni.aces.eeg2bids",
+    "productName": "eeg2bids",
+    "copyright": "Open Source",
+    "asar": false,
+    "linux": {
+      "target": [
+        "deb",
+        "snap"
+      ],
+      "category": "Utility"
+    },
+    "snap": {
+      "confinement": "classic"
+    },
+    "win": {
+      "icon": "./public/logo512.png",
+      "target": [
+        "nsis"
+      ],
+      "legalTrademarks": "Open Source",
+      "signingHashAlgorithms": [
+        "sha1",
+        "sha256"
+      ]
+    },
+    "mac": {
+      "target": [
+        "default"
+      ],
+      "icon": "./public/logo512.icns",
+      "category": "public.app-category.medical",
+      "gatekeeperAssess": false,
+      "extendInfo": {
+        "CFBundleDocumentTypes": [
+          {
+            "CFBundleTypeName": "Folders",
+            "CFBundleTypeRole": "Viewer",
+            "LSHandlerRank": "Alternate",
+            "LSItemContentTypes": [
+              "public.folder",
+              "com.apple.bundle",
+              "com.apple.package",
+              "com.apple.resolvable"
+            ]
+          },
+          {
+            "CFBundleTypeName": "UnixExecutables",
+            "CFBundleTypeRole": "Shell",
+            "LSHandlerRank": "Alternate",
+            "LSItemContentTypes": [
+              "public.unix-executable"
+            ]
+          }
+        ],
+        "NSDesktopFolderUsageDescription": "EEG2BIDS Wizard wants to access the Desktop folder.",
+        "NSDocumentsFolderUsageDescription": "EEG2BIDS Wizard wants to access the Documents folder.",
+        "NSDownloadsFolderUsageDescription": "EEG2BIDS Wizard wants to access the Downloads folder.",
+        "NSFileProviderDomainUsageDescription": "EEG2BIDS Wizard wants to access files managed by a file provider.",
+        "NSSystemAdministrationUsageDescription": "The operation being performed by EEG2BIDS Wizard requires elevated permission."
+      }
+    },
+    "nsis": {
+      "oneClick": true,
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "utils/**/*",
+      "python/**/*",
+      "dist",
+      "dist/eeg2bids-service.app",
+      "public/*",
+      "package.json"
+    ],
+    "extraResources": [
+      "public/preload.js"
+    ],
+    "directories": {
+      "buildResources": "public"
+    }
   }
 }

@@ -1,54 +1,13 @@
-const {app, BrowserWindow, Menu } = require('electron');
-const path= require('path');
-let mainWindow;
-let newWindow;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './css/index.css';
+import App from './App';
+import ViewManager from './ViewManager';
+import * as serviceWorker from './serviceWorker';
 
+ReactDOM.render(<ViewManager/>, document.getElementById('root'));
 
-app.on('ready', ()=> {
-    mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600
-      })
-      
-      mainWindow.on('closed', ()=>{
-        app.quit();
-      });
-      
-      mainWindow.loadFile('views/index.html')
-      const mainMenu = Menu.buildFromTemplate(templateMenu);
-      Menu.setApplicationMenu(mainMenu);
-    });
-
-    const templateMenu=[
-      {
-        label:'File', 
-        submenu:[
-          {
-        
-            label:'Exit',
-            accelerator:'Ctrl+Q',
-            click(){
-              app.quit();
-            }
-          }
-        ]        
-      }
-    ];
-
-    if(process.env.NODE_ENV !== 'production'){
-      templateMenu.push({
-        label:'Devtools',
-        submenu:[
-          {
-            label:'Show / Hide DevTools',
-            click(item,focusedWindow){
-              focusedWindow.toggleDevTools();
-            }
-          },
-          {
-            role:'reload'
-          }
-        ]
-      })
-    }
-
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();

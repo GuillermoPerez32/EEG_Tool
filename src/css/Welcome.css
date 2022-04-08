@@ -1,0 +1,36 @@
+.title {
+    display: block;
+    cursor: default;
+    font-size: 22pt;
+    text-align: center;
+    vertical-align: middle;
+    padding: 40px 20px 40px 20px;
+    color: #f6ffff;
+    background-color: #064785;
+    font-family: Verdana, sans-serif;
+}
+.font-large {
+    font-size: 16pt;
+}
+.font-medium {
+    font-size: 14pt;
+}
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    color: #c8c8c8;
+    position: fixed;
+    text-align: center;
+    font-size: 11pt;
+    background-color: #282828;
+}
+.open-source {
+    color: #7fb3e3;
+    cursor: pointer;
+}
+.mcin {
+    color: #7fb3e3;
+    cursor: pointer;
+}

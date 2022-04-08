@@ -1,0 +1,34 @@
+.readonly {
+    cursor: default;
+    background: transparent;
+    border: 1px none #3276b1;
+    border-bottom-style: solid;
+}
+.readonly:focus, .readonly:focus{
+    outline: none;
+}
+input[type="button"].primary-btn {
+    color: #fff;
+    background-color: #064785;
+    border: none;
+    border-radius: .25rem;
+    padding: .375rem .75rem;
+}
+input[type="button"].primary-btn:disabled {
+    color: #ddd;
+    background-color: #858b97;
+    border: 1px solid #ddd;
+}
+textarea {
+    vertical-align: top;
+    font-family: Arial;
+}
+.resetBtn {
+    text-align: right;
+    width: 50%;
+    background-color: #e9eaee;
+}
+.fa-question-circle {
+    color: #064785;
+    margin: 0 5px;
+}
