@@ -3,11 +3,17 @@ const path= require('path');
 let mainWindow;
 let newWindow;
 
+if (process.env.NODE_ENV !== 'production') {
+  require('electron-reload')(__dirname, {
+
+  })
+}
+
 
 app.on('ready', ()=> {
     mainWindow = new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
       })
       
       mainWindow.on('closed', ()=>{
@@ -15,8 +21,8 @@ app.on('ready', ()=> {
       });
       
       mainWindow.loadFile('views/index.html')
-      const mainMenu = Menu.buildFromTemplate(templateMenu);
-      Menu.setApplicationMenu(mainMenu);
+      // const mainMenu = Menu.buildFromTemplate(templateMenu);
+      Menu.setApplicationMenu(null);
     });
 
     const templateMenu=[

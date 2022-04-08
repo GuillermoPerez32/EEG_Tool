@@ -1,15 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Store</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css"> 
+    <title> EEG Tool</title>
+   
+    <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css"> 
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    
 </head>
+
 <body>
-    <script>
-        const electron= requiere('electron');
-    </script>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+    <div class="sidebar-header">
+        <div class="d-flex justify-content-between">
+            <div class="toggler">
+                <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+            </div>
+        </div>
+    </div>    
+
+    <div class="sidebar-menu">
+        <ul class="menu">
+            
+            <li class="sidebar-title">Menu</li>
+            
+            <li class="sidebar-item  has-sub ">
+                <a href="" class='sidebar-link'>
+                    <i class="bi bi-stack"></i>
+                    <span>Get Started</span>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a href="">Info</a>
+                    </li>
+                </ul>
+            </li>
+            
+       
+            <li class="sidebar-item  has-sub">
+                <a href="" class='sidebar-link'>
+                    <i class="bi bi-stack"></i>
+                    <span>Configuration</span>
+                </a>
+                <ul class="submenu ">
+                    <li class="submenu-item ">
+                        <a href="#">Recording Data</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="#">Recording Metadata</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="#">Recording Details</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="#">Participan Details</a>
+                    </li>
+                    <li class= "submenu-item">
+                        <a href="#">EDF Header Data</a>
+                    </li> 
+                </ul>
+            </li>
+            <li class="sidebar-item active">
+                <a href="#" class='sidebar-link'>
+                    <i class="bi bi-grid-fill"></i>
+                    <span>Validate and Package</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+</div>
+        </div>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+<div class="page-content">
+    <section class="row">
+        <img src="./imagen/EEG2bIDS_Wizard_(converter_tool).jpg" class="img-fluid" >
+    </section>
+    
+    <br>
+    <br>
+    <p class="text-center">EEG2BIDS Wizard is a tool for de-identification of EDF data and conversion to BIDS format for data sharing.
+        This software is designed to run on EDF files (EEG or stereo iEEG) for one recording from one subject at a time. Events and metadata such as a LORIS ProjectID and Visit Label can be included.
+        For more information about BIDS, <a href="bids.neuroimaging.io">bids.neuroimaging.io</a> </p> 
+</div>
+
+<!--fin del contenido-->
+
+<footer class="bg-light text-center ">
+    <!-- Grid container -->
+    <div class="container p-4">
+  
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+  
+        <!-- Twitter -->
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+  
+        <!-- Google -->
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!" role="button"><i class="fab fa-google"></i></a>
+  
+        <!-- Instagram -->
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+  
+        <!-- Linkedin -->
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+        <!-- Github -->
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!" role="button"><i class="fab fa-github"></i></a>
+      </section>
+      
+      
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+     Powered by 
+      <a href="https://mdbootstrap.com/">open source software</a>
+      and <a href="https://mne.tools/mne-bids/stable/index.html">MNE-BIDS.</a>
+      <br>
+      <a href="https://github.com/GuillermoPerez32/EEG_Tool">Contact us</a>
+      with you feedback.
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+        </div>
+    </div>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
 </body>
+
 </html>
